@@ -2,25 +2,16 @@
 
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-	<!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-</head>
+<head th:replace="layouts :: header"></head>
 
 <body>
 
-<nav th:replace="layouts :: navbar"></nav>
+	<nav th:replace="layouts :: navbar"></nav>
 	
 	<div class="container">
 		<form action="/projects/save" th:object="${project}" method="POST">
 		
-		<input type="text" placeholder="Project Name" th:field="*{name}">
+		<input type="text" placeholder="Project Name" th:field="${project.name}">
 		
 		<select th:field="${project.stage}">
 			<option th:value="NOTSTARTED"> Not Started</option>
@@ -29,6 +20,13 @@
 		</select>
 		
 		<textarea type="text" placeholder="Enter Project Description" th:field="${project.description}"></textarea>
+		
+		<select th:field="*{employees}" multiple="multiple">
+			<option th:each = "employee : ${allEmployees}"
+					th:value = "${employee.employeeId}"
+					th:text = "${employee.firstName}">
+			</option>
+		</select>
 		
 		<button type="submit">Create Project</button>
 		
