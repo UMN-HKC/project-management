@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,10 +24,15 @@ public class Project {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="project_seq")
 	private long projectId;  	// outsource assigning projectId to database instead of constructor
 	
+	@NotNull
+	@Size(min=2, max=50)
 	private String name;
 	
+	@NotNull
 	private String stage; // NOTSTARTED, COMPLETED, INPROGRESS
 	
+	@NotNull
+	@Size(min=2, max=50)
 	private String description;
 	
 	@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST},

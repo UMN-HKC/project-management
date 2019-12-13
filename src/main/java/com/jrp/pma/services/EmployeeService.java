@@ -3,6 +3,7 @@ package com.jrp.pma.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.jrp.pma.dao.EmployeeRepository;
@@ -35,5 +36,15 @@ public class EmployeeService {
 		// TODO Auto-generated method stub
 		employeeRepo.deleteById(id);
 		
+	}
+
+	public Employee findByEmail(String value) {
+		// TODO Auto-generated method stub
+		return employeeRepo.findByEmail(value);
+	}
+
+	public Iterable<Employee> findAll(Pageable pageAndSize) {
+		// TODO Auto-generated method stub
+		return employeeRepo.findAll(pageAndSize);
 	}
 }

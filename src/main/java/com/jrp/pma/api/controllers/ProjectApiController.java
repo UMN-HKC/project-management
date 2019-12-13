@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jrp.pma.entities.Employee;
 import com.jrp.pma.entities.Project;
 import com.jrp.pma.services.ProjectService;
 
 @RestController
-@RequestMapping("/app-api/employees")
+@RequestMapping("/app-api/projectss")
 public class ProjectApiController {
 	
 	@Autowired
