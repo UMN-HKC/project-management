@@ -4,10 +4,12 @@ import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProjectManagementApplicationTests {
+public class ProjectManagementApplicationTests {
 
+	public ProjectManagementApplicationTests() {}
+	
 	@Test
-	void contextLoads() {
+	public void contextLoads() {
 	}
 
 }
